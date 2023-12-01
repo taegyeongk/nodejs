@@ -23,13 +23,23 @@
             <input type="checkbox" value="대구" v-model="city">대구
             <p>{{ city }}</p>
         </div>
+        <div>
+            <input type="radio" value="독서" v-model="hobby">독서
+            <input type="radio" value="영화" v-model="hobby">영화
+            <input type="radio" value="운동" v-model="hobby">운동
+            <p>{{ hobby }}</p>
+            <hr>
+            <img v-bind:style="styleData" v-bind:src="imgUrl">  <!-- imgUrl : 외부 url 사용 -->
+            <div class="container" v-bind:class="{'active' : isActive, 'text-red' : hasError}">Class Binding First</div>
+            <div class="container" v-bind:class="myClass">Class Binding Second</div> 
+            <!-- myClass : 해당 프로퍼티에 대한 클래스 값을 정의 -->
+        </div>
     </div>
 </template>
 
 <script>
     export default {
         data(){
-
             return {
                 title : 'Hello, Vue.js',
                 tagList : '<strong>Today is ... </strong>',
@@ -38,11 +48,40 @@
                 selectModel : 'winter',
                 textModel : '입력해보쇼',
                 chData : '',
-                city : ''
-
+                city : [],
+                hobby : '',
+                imgUrl : 'https://i.namu.wiki/i/DUgdciLXlTOFQcVHz8FY0SpCRFeripHJCQm1NnlpMoLJ9yoYtT9jba3oCcxEAppD1oThaW6WkaM7TL619Ra-pBuSZh3WZg5DvI6wMDgqCtTzLDgvG3kEyxFA76HLuDL4fXTEQWYjqwCeA-ZPLdoVcA.webp',
+                styleData : {
+                    backgroundColor : 'beige',
+                    width : '300px'
+                },
+                // backSetting : 'background-color:pink; width:200px;',
+                // addStyle : 'height:200'  처럼 사용해도 되지만, 세부사항 수정이 불가하기 때문에 권장하지 않는다.
+                isActive : true,
+                //hasError : !this.isActive 는 데이터 속성에 있는 property를 변경하는 것 보다는 computed 속성으로 사용해줘야한다.
+                myClass : 'active'
+            }
+        },
+        computed : {
+            hasError(){
+                return !this.isActive;
             }
         }
 
     } //export : module.export 와 같이 객체에 대한 정보를 내보내는 역할.
 </script>
+
+<style scope>
+    .container {
+        width : 100%;
+        height: 200px;
+    }
+    .active{
+        background-color : yellow;
+        font-weight : bold;
+    }
+    .text-red{
+        color : red;
+    }
+</style>
 
