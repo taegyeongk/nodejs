@@ -42,7 +42,7 @@ export default{
     },
     methods : {
         async getUserList(){
-            let result = (await axios.get('/t_users').catch(err=>{
+            let result = (await axios.get('/t_ㅡ users').catch(err=>{
                 console.log(err);
             }));
              let list = result.data;
