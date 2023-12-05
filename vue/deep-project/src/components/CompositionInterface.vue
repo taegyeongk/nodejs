@@ -1,0 +1,43 @@
+<template>
+  <div>
+    <h3>{{ title }}</h3>
+    <p>저자 : {{ author.name }}</p>
+    <template v-if="isWrited">
+      <p :key="idx" v-for="(info, idx) in author.books">
+        {{ info }}
+      </p>
+    </template>
+    <p v-else>아직출간한 책이 없습니다.</p>
+    <button @click="plusBookInfo">정보업데이트</button>
+  </div>
+</template>
+<script setup>
+import { reactive, ref, computed, watch } from "vue";
+//data 옵션 : reactive, ref
+//computed 옵션 : computed
+//watch 옵션 : watch
+//methods 옵션 : 특정없음. 내부에 함수로 선언.
+
+const author = reactive({
+  name: "John Doe",
+  books: [
+    "Vue 2 - Advanced Guide",
+    "Vue 3 - Basic Guide",
+    "Vue 4 - The Mystery",
+  ],
+});
+
+const title = ref("제목을 입력해주세요"); //title.value 식으로 접근하여 사용가능.
+const isWrited = computed(() => {
+  return author.books.length > 0 ? "Yes" : "No";
+});
+
+watch(author.books, (info) => {
+  console.log(info[info.length - 1]);
+});
+
+const plusBookInfo = () => {
+  let info = "Node.js - Javascript RunTime";
+  author.books.push(info);
+};
+</script>
