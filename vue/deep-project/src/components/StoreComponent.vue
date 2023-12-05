@@ -60,7 +60,13 @@ export default {
   },
   methods: {
     addCart() {
-      this.$store.commit("addProduct", this.productInfo); //method 를 부를때 commit 이라는 메세지에 전달
+      //this.$store.commit("addProduct", this.productInfo); //method 를 부를때 commit 이라는 메세지에 전달
+      let obj = {
+        product_id: this.productInfo.product_id,
+        product_name: this.productInfo.product_name,
+        category: this.productInfo.category,
+      };
+      this.$store.commit("addProduct", obj);
     },
   },
 };
