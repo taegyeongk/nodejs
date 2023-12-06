@@ -66,7 +66,7 @@ export default {
         product_name: this.productInfo.product_name,
         category: this.productInfo.category,
       };
-      this.$store.commit("addProduct", obj);
+      this.$store.dispatch("addProduct", obj);
     },
   },
 };

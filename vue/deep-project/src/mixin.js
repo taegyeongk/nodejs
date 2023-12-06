@@ -1,3 +1,5 @@
+//믹스인은 기능을 따로 구현 후, 필요할때마다 컴포넌트와 결합하여 사용
+
 export default {
   methods: {
     $dataFormat(value, format) {

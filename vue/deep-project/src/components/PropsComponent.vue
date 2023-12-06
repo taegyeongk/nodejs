@@ -2,6 +2,7 @@
 <template>
   <div>
     <PageTitle title="Hello, world" />
+    <!-- 부모컴포넌트에서 가지고 오지 않을 경우 /사용 -->
     <!-- 자바스크립트 안에서 : 사용할려면 홑따옴표가 와야함 -->
     <!-- <PageContent
       :title="header"
