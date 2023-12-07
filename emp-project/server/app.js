@@ -21,11 +21,17 @@ app.get("/emps", async (req, res) => {
   res.send(list); //send 가 실행되기전에 await 로 받아야함.
 });
 
+//전체 부서조회
+app.get("/depts", async (req, res) => {
+  let list = await mysql.query("dept", "list");
+  res.send(list); //send 가 실행되기전에 await 로 받아야함.
+});
+
 //단건조회
 app.get("/emps/:no", async (req, res) => {
   let empNo = req.params.no; // --> no 로 받아오는 값을 sql.js에서 물음표 1개있는곳에 담아주기때문에 no라고 변수명을 정해줘도 emp_no에 들어가니 연결이된다.
   let info = await mysql.query("emp", "info", empNo);
-  res.send(info);
+  res.send(info[0]);
 });
 
 const empTable = ["emp_no", "first_name", "last_name", "gender", "hire_date"];

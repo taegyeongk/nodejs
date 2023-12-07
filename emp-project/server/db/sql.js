@@ -7,7 +7,7 @@ let emp = {
   join salaries s on (e.emp_no = s.emp_no)
   where h.to_date = cast('9999-01-01' as date)
   and s.to_date = cast('9999-01-01' as date)
-  order by e.emp_no DESC`,
+  order by e.emp_no desc limit 0,10`,
   info: `select e.emp_no, e.first_name, e.last_name, e.gender, e.hire_date, s.salary,
   d.dept_no, d.dept_name
   from employees e join dept_emp h on(  e.emp_no = h.emp_no)
