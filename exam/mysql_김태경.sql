@@ -35,3 +35,9 @@ VALUES
         (1003, 'Stephanie Overby', '클라우드로 전환 결정이 중요한 시점은 이미 지났다. 이제 얼마나 잘 진행되고 있는지가 중요하다.', '2023-11-19','2023-11-19', 103);
 
 COMMIT;
+
+
+
+select * from t_board_board where no=100;
+
+select * from t_comment_board;
